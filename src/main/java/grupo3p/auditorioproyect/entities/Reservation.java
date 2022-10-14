@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "reservation")
@@ -19,17 +18,17 @@ public class Reservation {
     private String status = "created";
 
     @ManyToOne
-    @JoinColumn(name = "client")
-    @JsonIgnoreProperties({"reservation", "message"})
-    private Client client;
-
-    @ManyToOne
-    @JoinColumn(name = "audience")
-    @JsonIgnoreProperties("reservation")
+    @JoinColumn(name = "id")
+    @JsonIgnoreProperties("reservations")
     private Audience audience;
 
-    @OneToOne(cascade = {CascadeType.REMOVE}, mappedBy = "reservation")
-    @JsonIgnoreProperties("reservation")
+    @ManyToOne
+    @JoinColumn(name = "client")
+    @JsonIgnoreProperties({"reservations", "messages"})
+    private Client client;
+
+    @OneToOne(cascade = {CascadeType.REMOVE}, mappedBy = "reservations")
+    @JsonIgnoreProperties("reservations")
     private Score score;
 
     public Integer getIdReservation() {
@@ -64,20 +63,20 @@ public class Reservation {
         this.status = status;
     }
 
-    public Client getClient() {
-        return client;
-    }
-
-    public void setClient(Client client) {
-        this.client = client;
-    }
-
     public Audience getAudience() {
         return audience;
     }
 
     public void setAudience(Audience audience) {
         this.audience = audience;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     public Score getScore() {

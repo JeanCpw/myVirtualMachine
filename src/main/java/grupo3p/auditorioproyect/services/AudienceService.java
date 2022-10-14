@@ -11,13 +11,13 @@ import java.util.List;
 public class AudienceService {
 
     @Autowired
-    private AudienceRepository audienceRepository;
+    private AudienceRepository audiencesRepository;
 
     public List<Audience> getAll(){
-        return audienceRepository.getAll();
+        return audiencesRepository.getAll();
     }
 
     public Audience save(Audience salvage){
-        return audienceRepository.save(salvage);
+        return audiencesRepository.save(salvage);
     }
 }

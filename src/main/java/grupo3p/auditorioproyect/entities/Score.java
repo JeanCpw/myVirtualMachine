@@ -17,7 +17,7 @@ public class Score {
 
     @OneToOne
     @JsonIgnoreProperties("score")
-    private Reservation reservation;
+    private Reservation reservations;
 
     public Integer getIdScore() {
         return idScore;
@@ -43,11 +43,11 @@ public class Score {
         this.messageText = messageText;
     }
 
-    public Reservation getReservation() {
-        return reservation;
+    public Reservation getReservations() {
+        return reservations;
     }
 
-    public void setReservation(Reservation reservation) {
-        this.reservation = reservation;
+    public void setReservations(Reservation reservations) {
+        this.reservations = reservations;
     }
 }
