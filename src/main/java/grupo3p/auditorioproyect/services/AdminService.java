@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AdminService {
@@ -17,7 +18,5 @@ public class AdminService {
         return adminRepository.getAll();
     }
 
-    public Admin save(Admin salvage){
-        return adminRepository.save(salvage);
-    }
+    public Admin save(Admin salvage){ return adminRepository.save(salvage); }
 }
