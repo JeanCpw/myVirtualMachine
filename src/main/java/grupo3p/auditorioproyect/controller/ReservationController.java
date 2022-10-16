@@ -3,6 +3,7 @@ package grupo3p.auditorioproyect.controller;
 import grupo3p.auditorioproyect.entities.Reservation;
 import grupo3p.auditorioproyect.services.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,6 +21,7 @@ public class ReservationController {
     }
 
     @PostMapping("/save")
+    @ResponseStatus(HttpStatus.CREATED)
     public Reservation save(@RequestBody Reservation salvage){
         return reservationService.save(salvage);
     }

@@ -3,6 +3,7 @@ package grupo3p.auditorioproyect.controller;
 import grupo3p.auditorioproyect.entities.Audience;
 import grupo3p.auditorioproyect.services.AudienceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,6 +21,7 @@ public class AudienceController {
     }
 
     @PostMapping("/save")
+    @ResponseStatus(HttpStatus.CREATED)
     public Audience save(@RequestBody Audience salvage){
           return audienceService.save(salvage);
     }
