@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/Audience")
@@ -21,10 +22,27 @@ public class AudienceController {
         return audienceService.getAll();
     }
 
+    @GetMapping("/{id}")
+    public Optional<Audience> getById(@PathVariable("id") int id){
+        return audienceService.getById(id);
+    }
+
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
     public Audience save(@RequestBody Audience salvage){
           return audienceService.save(salvage);
+    }
+
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Audience update(@RequestBody Audience newData){
+        return audienceService.update(newData);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean delete(@PathVariable("id") int id){
+        return audienceService.delete(id);
     }
 }
 

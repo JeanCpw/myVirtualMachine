@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class ReservationRepository {
@@ -17,7 +18,15 @@ public class ReservationRepository {
         return (List<Reservation>) reservationCrudRepository.findAll();
     }
 
+    public Optional<Reservation> getById(int id){
+       return reservationCrudRepository.findById(id);
+    }
+
     public Reservation save(Reservation salvage){
         return reservationCrudRepository.save(salvage);
+    }
+
+    public void delete(Reservation endReservation){
+        reservationCrudRepository.delete(endReservation);
     }
 }

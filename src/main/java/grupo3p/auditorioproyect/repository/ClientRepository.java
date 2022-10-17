@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class ClientRepository {
@@ -17,7 +18,15 @@ public class ClientRepository {
         return (List<Client>) clientCrudRepository.findAll();
     }
 
+    public Optional<Client> getById(int id){
+        return clientCrudRepository.findById(id);
+    }
+
     public Client save(Client salvage){
         return clientCrudRepository.save(salvage);
+    }
+
+    public void delete(Client endClient){
+        clientCrudRepository.delete(endClient);
     }
 }
