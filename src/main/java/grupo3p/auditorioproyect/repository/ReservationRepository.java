@@ -5,6 +5,7 @@ import grupo3p.auditorioproyect.repository.crud.ReservationCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,5 +29,17 @@ public class ReservationRepository {
 
     public void delete(Reservation endReservation){
         reservationCrudRepository.delete(endReservation);
+    }
+
+    public List<Reservation> getReports(Date starReport, Date endReport){
+        return reservationCrudRepository.findAllByStartDateAfterAndStartDateBefore(starReport, endReport);
+    }
+
+    public List<Reservation> getStatus(String status){
+        return reservationCrudRepository.findAllByStatus(status);
+    }
+
+    public List<Object[]> getTopClients(){
+        return reservationCrudRepository.getTopClients();
     }
 }

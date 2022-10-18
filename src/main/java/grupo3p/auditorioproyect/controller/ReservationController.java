@@ -1,6 +1,8 @@
 package grupo3p.auditorioproyect.controller;
 
 import grupo3p.auditorioproyect.entities.Reservation;
+import grupo3p.auditorioproyect.entities.dto.ReportStatus;
+import grupo3p.auditorioproyect.entities.dto.TopClients;
 import grupo3p.auditorioproyect.services.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -44,5 +46,20 @@ public class ReservationController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") int id){
         return reservationService.delete(id);
+    }
+
+    @GetMapping("/report-dates/{dateA}/{dateB}")
+    public List<Reservation> getByDates(@PathVariable("dateA")String date1, @PathVariable("dateB")String date2){
+        return reservationService.getReservationsByPeriod(date1, date2);
+    }
+
+    @GetMapping("/report-status")
+    public ReportStatus getByStatus(){
+        return reservationService.getReportStatus();
+    }
+
+    @GetMapping("/report-clients")
+    public List<TopClients> getTopClient(){
+        return reservationService.getTopClient();
     }
 }
